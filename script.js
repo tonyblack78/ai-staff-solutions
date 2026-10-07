@@ -1,3 +1,22 @@
+// Book-a-demo link: set CALENDLY_URL once it's ready and every
+// "Book a demo" button on the page (header, mobile nav, final CTA)
+// updates automatically. Leave empty to keep the placeholder behavior.
+const CALENDLY_URL = ""; // e.g. "https://calendly.com/your-handle/demo"
+
+const demoLinks = document.querySelectorAll('[data-demo-link]');
+demoLinks.forEach(link => {
+  if (CALENDLY_URL) {
+    link.href = CALENDLY_URL;
+    link.target = '_blank';
+    link.rel = 'noopener';
+  } else {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Demo scheduling is coming online shortly — in the meantime, call (424) 234-7755.');
+    });
+  }
+});
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const header = document.querySelector('.site-header');
